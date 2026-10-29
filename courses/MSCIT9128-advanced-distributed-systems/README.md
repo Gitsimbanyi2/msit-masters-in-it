@@ -23,7 +23,8 @@ This is the module with the October 2026 CAT (AgriMart-style case). Study notes 
 - `notes.md` — weekly log
 - `study-notes.md` — condensed revision in original wording
 - `cat-revision.md` — timed CAT checklist (Oct 2026)
-- `assignments/` — drop marked CATs locally
+- `cat-model-answers.md` — full model answers (AgriMart, MedConnect, SwiftTrade, BrightStitch, EduNet)
+- `assignments/CAT_Distributed_Systems_ERP_Cloud_FULL_ANSWERS.docx` — original Word file from `Desktop\UOK`
 
 ## Link to work
 
