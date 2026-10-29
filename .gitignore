@@ -7,5 +7,7 @@ Thumbs.db
 ~$*
 *.tmp
 assignments/*.pdf
+assignments/*.ppt
 assignments/*.pptx
 assignments/*.zip
+assignments/lectures/

@@ -24,7 +24,13 @@ This is the module with the October 2026 CAT (AgriMart-style case). Study notes 
 - `study-notes.md` — condensed revision in original wording
 - `cat-revision.md` — timed CAT checklist (Oct 2026)
 - `cat-model-answers.md` — full model answers (AgriMart, MedConnect, SwiftTrade, BrightStitch, EduNet)
-- `assignments/CAT_Distributed_Systems_ERP_Cloud_FULL_ANSWERS.docx` — original Word file from `Desktop\UOK`
+- `lecture-map.md` — which local PPT/PDF is which chapter (files stay off GitHub)
+- `chapter-02-systems-integration.md` — silos, POSDCORB, ERP as integrator
+- `chapter-03-enterprise-architecture-erp.md` — ESA, modules, 3-tier, SOA, cloud ERP
+- `chapter-04-cloud-computing.md` — NIST, bursting, SLA, lock-in
+- `data-warehouse-and-bi.md` — DW four properties, OLTP vs OLAP, BI
+- `assignments/CAT_Distributed_Systems_ERP_Cloud_FULL_ANSWERS.docx` — your Word file
+- `assignments/lectures/` — lecturer PDF/PPT on this PC only (gitignored)
 
 ## Link to work
 
