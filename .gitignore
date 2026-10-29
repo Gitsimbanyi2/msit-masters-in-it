@@ -1,0 +1,11 @@
+.env
+.env.*
+*.pem
+*.key
+Thumbs.db
+.DS_Store
+~$*
+*.tmp
+assignments/*.pdf
+assignments/*.pptx
+assignments/*.zip
