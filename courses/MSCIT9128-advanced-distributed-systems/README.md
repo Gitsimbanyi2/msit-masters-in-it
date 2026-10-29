@@ -29,8 +29,10 @@ This is the module with the October 2026 CAT (AgriMart-style case). Study notes 
 - `chapter-03-enterprise-architecture-erp.md` — ESA, modules, 3-tier, SOA, cloud ERP
 - `chapter-04-cloud-computing.md` — NIST, bursting, SLA, lock-in
 - `data-warehouse-and-bi.md` — DW four properties, OLTP vs OLAP, BI
+- `MSCIT9128-CAT-diagrams.pptx` — student revision PowerPoint (all CAT diagrams)
+- `diagrams/cat-all-diagrams.jpg` — one-sheet drawing pack
 - `assignments/CAT_Distributed_Systems_ERP_Cloud_FULL_ANSWERS.docx` — your Word file
-- `assignments/lectures/` — lecturer PDF/PPT on this PC only (gitignored)
+- `assignments/lectures/` — lecturer PDF/PPT and the Adobe Scan CAT paper on this PC only (gitignored; Pearson / exam paper not published)
 
 ## Link to work
 

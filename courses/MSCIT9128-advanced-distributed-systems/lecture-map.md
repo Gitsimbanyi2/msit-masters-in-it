@@ -1,7 +1,12 @@
 # MSCIT9128 — local lecture pack map
 
-Lecturer: Assoc. Prof. James Rwigema (Distributed Computing 2024–2025).  
-These files live on disk under `assignments/lectures/` and are **not** on GitHub (copyrighted slides / Pearson figures).
+Lecturer: Assoc. Prof. James Rwigema (Distributed Computing 2024–2025).
+
+**On GitHub:** `MSCIT9128-CAT-diagrams.pptx` and `diagrams/cat-all-diagrams.jpg` (student CAT drawings).
+
+**On this PC only** (`assignments/lectures/`, gitignored): lecturer PDF/PPT. There is **no** “Introduction to Distributed Systems.pptx” on this computer — Chapter 1 is the 332-page PDF. `BI ADS.pptx` is Business Intelligence, not the intro DS deck.
+
+The misnamed dairy-finance TOR (`UOK_AdvanceDistr_Syste.pdf`) is not part of this course and is not in the repo.
 
 | Local file | Use in CAT |
 |------------|------------|
