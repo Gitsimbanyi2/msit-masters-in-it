@@ -16,8 +16,10 @@ Turn data into models and decisions, with enough statistics and pipeline thinkin
 
 ## Folder
 
-- `notes.md` — your weekly notes
-- `assignments/` — CAT scans, practicals, marked work (PDFs gitignored by default)
+- `notes.md` — weekly log
+- `day1-study-notes.md` — MIT 91205 Day 1 (5 V's, analytics types, CAP, lifecycle)
+- `assignments/mit91205-day1/` — Day 1 lab (notebook, scripts, charts, CSV)
+- `assignments/` — CAT scans and lecturer PDFs stay local (gitignored)
 - `revision.md` — last-week checklist
 
 ## Exam / CAT tips
@@ -27,4 +29,4 @@ Turn data into models and decisions, with enough statistics and pipeline thinkin
 
 ## Status
 
-Notes in progress. Add lecture dates and CAT marks here as you go.
+Day 1 (1 Nov 2026) done: lecture notes + Labs 1–7 on `sample-sales.csv`. Next: Day 2 HDFS / MapReduce and the Dean & Ghemawat (2004) paper.
