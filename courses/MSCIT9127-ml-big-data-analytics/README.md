@@ -18,7 +18,11 @@ Turn data into models and decisions, with enough statistics and pipeline thinkin
 
 - `notes.md` — weekly log
 - `day1-study-notes.md` — MIT 91205 Day 1 (5 V's, analytics types, CAP, lifecycle)
+- `day2-study-notes.md` — HDFS, YARN, MapReduce patterns
+- `day3-study-notes.md` — HiveQL, schema-on-read, Pig Latin
 - `assignments/mit91205-day1/` — Day 1 lab (notebook, scripts, charts, CSV)
+- `assignments/mit91205-day2/` — block placement, word count, joins (no cluster)
+- `assignments/mit91205-day3/` — HiveQL in SQLite and a Pig-style dataflow
 - `assignments/` — CAT scans and lecturer PDFs stay local (gitignored)
 - `revision.md` — last-week checklist
 
@@ -29,4 +33,6 @@ Turn data into models and decisions, with enough statistics and pipeline thinkin
 
 ## Status
 
-Day 1 (1 Nov 2026) done: lecture notes + Labs 1–7 on `sample-sales.csv`. Next: Day 2 HDFS / MapReduce and the Dean & Ghemawat (2004) paper.
+Day 1 (1 Nov 2026) done: lecture notes + Labs 1–7 on `sample-sales.csv`.
+Day 2 done: HDFS block/replication labs and MapReduce word count, index, aggregation, and joins. Read Dean & Ghemawat (2004).
+Day 3 done: schema-on-read, partitions, HiveQL, and Pig on the same sales file. Next: Day 4 Spark.
