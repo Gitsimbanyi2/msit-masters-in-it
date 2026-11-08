@@ -23,6 +23,7 @@ Turn data into models and decisions, with enough statistics and pipeline thinkin
 - `assignments/mit91205-day1/` — Day 1 lab (notebook, scripts, charts, CSV)
 - `assignments/mit91205-day2/` — block placement, word count, joins (no cluster)
 - `assignments/mit91205-day3/` — HiveQL in SQLite and a Pig-style dataflow
+- `assignments/mit91205-day4/` — Day 4 Desk 8 slides (graph analytics, reporting, streaming boundary)
 - `assignments/` — CAT scans and lecturer PDFs stay local (gitignored)
 - `revision.md` — last-week checklist
 
@@ -35,4 +36,5 @@ Turn data into models and decisions, with enough statistics and pipeline thinkin
 
 Day 1 (1 Nov 2026) done: lecture notes + Labs 1–7 on `sample-sales.csv`.
 Day 2 done: HDFS block/replication labs and MapReduce word count, index, aggregation, and joins. Read Dean & Ghemawat (2004).
-Day 3 done: schema-on-read, partitions, HiveQL, and Pig on the same sales file. Next: Day 4 Spark.
+Day 3 done: schema-on-read, partitions, HiveQL, and Pig on the same sales file.
+Day 4 Desk 8: Spark applications in practice, in `assignments/mit91205-day4/desk8-slides.html`.

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIT 91205 Desk 8 — Spark applications in practice</title>
+  <style>
+    :root { --ink: #1c2833; --navy: #1a365d; --line: #d6dee8; --paper: #f7f5f0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Georgia, "Times New Roman", serif; color: var(--ink); background: #2c333a; }
+    .slide { display: none; min-height: 100vh; padding: 48px 64px 72px; background: white; }
+    .slide.active { display: block; }
+    h1 { font-family: "Segoe UI", Calibri, sans-serif; color: var(--navy); font-size: 34px; margin: 0 0 8px; }
+    h2 { font-family: "Segoe UI", Calibri, sans-serif; color: var(--navy); font-size: 22px; margin: 18px 0 8px; }
+    .kicker { font-family: "Segoe UI", Calibri, sans-serif; letter-spacing: .04em; text-transform: uppercase; font-size: 13px; color: #5c6b7a; }
+    ul { margin: 8px 0 0; padding-left: 22px; line-height: 1.45; }
+    p { line-height: 1.45; margin: 8px 0; }
+    .note { background: var(--paper); border-left: 4px solid var(--navy); padding: 10px 14px; margin-top: 16px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; font-family: "Segoe UI", Calibri, sans-serif; font-size: 18px; }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #eef3f8; color: var(--navy); }
+    .layout { display: grid; grid-template-columns: 280px 1fr; gap: 28px; align-items: start; }
+    .bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--navy); color: white; font-family: "Segoe UI", Calibri, sans-serif; font-size: 14px; display: flex; justify-content: space-between; padding: 10px 20px; }
+    button { background: white; color: var(--navy); border: 0; padding: 6px 12px; font-weight: 600; cursor: pointer; }
+    svg { width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <section class="slide active">
+    <p class="kicker">MIT 91205 · Big Data Analytics · Day 4 · Desk 8</p>
+    <h1>Scenario 5 — Graph analytics</h1>
+    <div class="layout">
+      <svg viewBox="0 0 260 220" aria-label="Small graph of five users">
+        <line x1="70" y1="50" x2="160" y2="40" stroke="#1a365d" stroke-width="2"/>
+        <line x1="70" y1="50" x2="40" y2="130" stroke="#1a365d" stroke-width="2"/>
+        <line x1="160" y1="40" x2="200" y2="120" stroke="#1a365d" stroke-width="2"/>
+        <line x1="40" y1="130" x2="120" y2="170" stroke="#1a365d" stroke-width="2"/>
+        <line x1="200" y1="120" x2="120" y2="170" stroke="#1a365d" stroke-width="2"/>
+        <line x1="160" y1="40" x2="120" y2="170" stroke="#1a365d" stroke-width="2"/>
+        <circle cx="70" cy="50" r="16" fill="#1a365d"/><circle cx="160" cy="40" r="16" fill="#1a365d"/>
+        <circle cx="40" cy="130" r="16" fill="#1a365d"/><circle cx="200" cy="120" r="16" fill="#1a365d"/>
+        <circle cx="120" cy="170" r="16" fill="#1a365d"/>
+      </svg>
+      <div>
+        <p>Graph analytics studies relationships. People or accounts are nodes. A call, a follow, or a transfer is an edge.</p>
+        <h2>How Spark helps</h2>
+        <ul>
+          <li>GraphX, or GraphFrames, runs the graph across the cluster.</li>
+          <li>The graph is built from tables Spark already read.</li>
+          <li>PageRank marks important nodes. Connected components find communities.</li>
+          <li>Spark SQL joins those scores back onto the account table.</li>
+        </ul>
+        <h2>Where it is used</h2>
+        <ul>
+          <li>Social networks, telecom call graphs, and fraud rings in banking.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">A bank can see which accounts keep paying each other. One account with millions of links slows a single task. That is skew, and the number of iterations decides the runtime.</p>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">MIT 91205 · Day 4 · Desk 8</p>
+    <h1>Scenario 6 — Large-scale aggregation and reporting</h1>
+    <div class="layout">
+      <svg viewBox="0 0 260 220" aria-label="Many rows reduced to three summary bars">
+        <rect x="20" y="30" width="70" height="8" fill="#8aa0b8"/><rect x="20" y="44" width="70" height="8" fill="#8aa0b8"/>
+        <rect x="20" y="58" width="70" height="8" fill="#8aa0b8"/><rect x="20" y="72" width="70" height="8" fill="#8aa0b8"/>
+        <rect x="20" y="86" width="70" height="8" fill="#8aa0b8"/><rect x="20" y="100" width="70" height="8" fill="#8aa0b8"/>
+        <polygon points="100,70 140,50 140,90" fill="#1a365d"/>
+        <rect x="155" y="40" width="28" height="120" fill="#1a365d"/>
+        <rect x="190" y="80" width="28" height="80" fill="#2b6cb0"/>
+        <rect x="225" y="110" width="28" height="50" fill="#63b3ed"/>
+      </svg>
+      <div>
+        <p>Aggregation turns a huge table into the totals a manager can read: sums, counts, and averages by region, branch, or date.</p>
+        <h2>How Spark helps</h2>
+        <ul>
+          <li>Spark SQL groups millions of rows on many machines.</li>
+          <li>A date partition means the job opens one day, not the whole history.</li>
+          <li>The result is a small Parquet or ORC table for the dashboard.</li>
+        </ul>
+        <h2>A bank can ask</h2>
+        <ul>
+          <li>Daily transaction totals, the busiest branches, monthly revenue, and a customer summary.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">The heavy work runs once. The dashboard reads the summary, not the raw terabytes. Too many output files make the next read slow, so the write is coalesced first.</p>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">MIT 91205 · Day 4 · Desk 8</p>
+    <h1>Batch processing and streaming</h1>
+    <table>
+      <tr><th>Batch</th><th>Streaming</th></tr>
+      <tr><td>Reads data that is already stored.</td><td>Reads events as they arrive.</td></tr>
+      <tr><td>Works on history: a day, a month, a year.</td><td>Works at low delay, for alerts.</td></tr>
+      <tr><td>Example: monthly transaction totals.</td><td>Example: a transfer that should be flagged now.</td></tr>
+    </table>
+    <h2>Tools named in the lecture</h2>
+    <ul>
+      <li>Batch on this day: Apache Spark.</li>
+      <li>Streaming, which is Day 5: Spark Structured Streaming, Apache Kafka, and Apache Flink.</li>
+    </ul>
+    <p class="note">Both can use a DataFrame, so the code looks similar. The execution does not. Batch can rerun from files. A stream has to keep up, and it has to decide whether time means when the event happened or when the job saw it.</p>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">MIT 91205 · Day 4 · Desk 8</p>
+    <h1>What Spark does not do for you</h1>
+    <ul>
+      <li>Memory: a cache of a large table needs RAM on the executors.</li>
+      <li>Shuffle: a join or a group moves rows between machines, and that move is the costly part.</li>
+      <li>Skew: one key with far too many rows makes one task last much longer than the others.</li>
+      <li>Cost: a cluster needs machines, memory, and storage.</li>
+      <li>Storage: Spark reads and writes. HDFS, Hive, or Parquet holds the bytes.</li>
+      <li>Tuning: partition count, memory, and the join strategy change the runtime.</li>
+    </ul>
+    <p class="note">Spark is the engine. The files live somewhere else. A good result still depends on the layout of those files and on a plan that avoids an unnecessary shuffle.</p>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">MIT 91205 · Day 4 · Desk 8 · Knowledge review</p>
+    <h1>Questions for the class</h1>
+    <ol>
+      <li>What is the main purpose of Apache Spark?</li>
+      <li>Does Spark permanently store the data?</li>
+      <li>What is the difference between batch and streaming?</li>
+      <li>What is GraphX for?</li>
+      <li>Which Spark library is for machine learning?</li>
+      <li>Why does a dashboard read an aggregate, not the raw table?</li>
+      <li>Name three limits of Spark.</li>
+    </ol>
+    <p class="note">Answers to leave on the table: Spark computes across a cluster. Storage is external. Batch reads history; streaming reads arrivals. GraphX is for nodes and edges. MLlib is for models. The aggregate is small enough for a dashboard. Limits: memory, shuffle, and skew.</p>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">MIT 91205 · Day 4 · Desk 8</p>
+    <h1>Close</h1>
+    <p>Spark is a distributed engine for data that is too large for one machine.</p>
+    <ul>
+      <li>Graph analytics, from tables of people and links.</li>
+      <li>Aggregation and reporting, from raw transactions to a small summary.</li>
+      <li>Machine learning, through MLlib, when the training set itself is large.</li>
+      <li>Batch today. Streaming is the same family of tools, and it is Day 5.</li>
+    </ul>
+    <p class="note">Spark turns raw files into information a decision can use. It does that by reading storage, computing, and writing the result back.</p>
+    <p>Thank you.</p>
+  </section>
+
+  <div class="bar">
+    <span id="label">Slide 1 of 6 · Graph analytics · about 2 minutes</span>
+    <span>
+      <button type="button" id="prev">Previous</button>
+      <button type="button" id="next">Next</button>
+    </span>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const times = ["about 2 minutes", "about 2 minutes", "about 2 minutes", "about 2 minutes", "about 2 minutes", "about 1 minute"];
+    const names = ["Graph analytics", "Aggregation and reporting", "Batch and streaming", "Limits", "Knowledge review", "Close"];
+    let i = 0;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("active", k === i));
+      document.getElementById("label").textContent = "Slide " + (i + 1) + " of 6 · " + names[i] + " · " + times[i];
+    }
+    document.getElementById("next").onclick = () => show(i + 1);
+    document.getElementById("prev").onclick = () => show(i - 1);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") show(i + 1);
+      if (e.key === "ArrowLeft") show(i - 1);
+    });
+  </script>
+</body>
+</html>
